@@ -1,5 +1,8 @@
 package br.mycontacts.models;
 
+import br.mycontacts.utils.ValidadorEmail;
+import br.mycontacts.utils.ValidadorTelefone;
+
 public class Contato {
 
     protected String nome;
@@ -7,9 +10,9 @@ public class Contato {
     protected String email;
 
     public Contato(String nome, String telefone, String email) {
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
+        setNome(nome);
+        setTelefone(telefone);
+        setEmail(email);
     }
 
     public String getNome() {
@@ -22,6 +25,27 @@ public class Contato {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setNome(String nome) {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome inválido");
+        }
+        this.nome = nome;
+    }
+
+    public void setTelefone(String telefone) {
+        if (!ValidadorTelefone.validarTelefone(telefone)) {
+            throw new IllegalArgumentException("Telefone inválido");
+        }
+        this.telefone = telefone;
+    }
+
+    public void setEmail(String email) {
+        if (!ValidadorEmail.validarEmail(email)) {
+            throw new IllegalArgumentException("E-mail inválido");
+        }
+        this.email = email;
     }
 
     @Override
