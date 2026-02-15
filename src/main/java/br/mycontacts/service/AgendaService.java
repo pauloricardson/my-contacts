@@ -21,24 +21,27 @@ public class AgendaService {
     }
 
     // 3. Buscar por nome
-    public Contato buscarContato(String nome) {
-        String termo = normalizar(nome.toLowerCase());
+    public List<Contato> buscarContatos(String nome) {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome inválido");
+        }
 
-        boolean encontrado = false;
+        String termo = normalizar(nome.toLowerCase());
+        List<Contato> resultados = new ArrayList<>();
 
         for (Contato c : contatos) {
-
             String nomeContato = normalizar(c.getNome().toLowerCase());
 
             if (nomeContato.contains(termo)) {
-                return c;
+                resultados.add(c);
             }
-            encontrado = true;
+        }
 
+        if (resultados.isEmpty()) {
+            throw new IllegalArgumentException("Nenhum contato encontrado");
         }
-        if (!encontrado) {
-            throw new IllegalArgumentException("Contato não encontrado");
-        }
+
+        return resultados;
     }
 
 
