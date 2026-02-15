@@ -38,36 +38,35 @@ O sistema permite cadastrar, listar, buscar e remover contatos com validação d
 ## 🧱 Estrutura do Projeto
 
 mycontacts/
-│
 ├── app/
-│ └── Main.java
+│   └── Main.java
 │
 ├── controller/
-│ ├── MenuPrincipal.java
-│ └── opcoes/
-│ ├── AdicionarContatoOption.java
-│ ├── ListarContatosOption.java
-│ ├── BuscarContatoOption.java
-│ └── RemoverContatoOption.java
+│   ├── MenuPrincipal.java
+│   └── opcoes/
+│       ├── AdicionarContatoOption.java
+│       ├── ListarContatosOption.java
+│       ├── BuscarContatoOption.java
+│       └── RemoverContatoOption.java
 │
 ├── service/
-│ └── AgendaService.java
+│   └── AgendaService.java
 │
 ├── model/
-│ ├── Contato.java
-│ └── ContatoComercial.java
+│   ├── Contato.java
+│   └── ContatoComercial.java
 │
 ├── exceptions/
-│ └── ContatoNaoEncontradoException.java
+│   └── ContatoNaoEncontradoException.java
 │
 ├── utils/
-│ ├── ConsoleUI.java
-│ └── ValidadorEmail.java
-
+│   ├── ConsoleUI.java
+│   └── ValidadorEmail.java
 
 ---
 
 ## 📊 Modelo de Dados
+
 
 ### Contato
 - nome
