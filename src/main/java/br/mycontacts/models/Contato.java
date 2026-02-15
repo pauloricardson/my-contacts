@@ -8,11 +8,13 @@ public class Contato {
     protected String nome;
     protected String telefone;
     protected String email;
+    protected long id;
 
     public Contato(String nome, String telefone, String email) {
         setNome(nome);
         setTelefone(telefone);
         setEmail(email);
+        this.id = gerarId();
     }
 
     public String getNome() {
@@ -46,6 +48,10 @@ public class Contato {
             throw new IllegalArgumentException("E-mail inválido");
         }
         this.email = email;
+    }
+
+    public static long gerarId() {
+        return System.currentTimeMillis();
     }
 
     @Override
