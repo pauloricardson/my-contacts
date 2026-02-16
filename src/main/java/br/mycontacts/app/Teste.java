@@ -10,7 +10,7 @@ public class Teste {
 
         Scanner teclado = new Scanner(System.in);
 
-        boolean teste = ConsoleUI.confirmar(teclado, "Confirmar (s/n)?");
+        boolean teste = ConsoleUI.confirmar("Confirmar (s/n)?");
 
         System.out.println(teste);
     }

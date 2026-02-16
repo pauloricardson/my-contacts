@@ -16,7 +16,7 @@ public class ConsoleUI {
         }
     }
 
-    public static void pausar(Scanner teclado) {
+    public static void pausar() {
         System.out.println("Pressione ENTER para continuar...");
         teclado.nextLine();
     }
@@ -35,7 +35,7 @@ public class ConsoleUI {
         }
     }
 
-    public static int lerInt(Scanner teclado, String mensagem) {
+    public static int lerInt(String mensagem) {
         while (true) {
             try {
                 System.out.print(mensagem + " ");
@@ -57,9 +57,9 @@ public class ConsoleUI {
         }
     }
 
-    public static boolean confirmar(Scanner teclado, String mensagem) {
+    public static boolean confirmar(String mensagem) {
         while (true) {
-            System.out.println(mensagem + " ");
+            System.out.print(mensagem + " ");
             String entrada = teclado.nextLine().trim().toLowerCase();
 
             if (entrada.equals("s")) return true;

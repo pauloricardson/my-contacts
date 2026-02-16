@@ -15,22 +15,23 @@ public class AdicionarContatoOption implements MenuOption {
 
     @Override
     public String nomeFuncao() {
-        return "Adicionar contato";
+        return "Adicionar Contato";
     }
 
     @Override
     public void executar() {
+        nomeFuncao();
         String nome = ConsoleUI.lerString("nome:");
         String telefone = ConsoleUI.lerString("Telefone:");
         String email = ConsoleUI.lerString("E-mail:");
 
-        try {
-            Contato contato = new Contato(nome, telefone, email);
-            agendaService.adicionarContato(contato);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        Contato contato = new Contato(nome, telefone, email);
+        agendaService.adicionarContato(contato);
 
-        System.out.println("Contato adicionado com sucesso!");
+        if (ConsoleUI.confirmar("Confirmar (s/n)?")) {
+            System.out.println("Contato adicionado com sucesso!");
+            return;
+        }
+        System.out.println("Opreção cancelada.");
     }
 }
