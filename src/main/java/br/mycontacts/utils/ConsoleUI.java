@@ -18,6 +18,20 @@ public class ConsoleUI {
         teclado.nextLine();
     }
 
+    public static String lerString(Scanner teclado, String mensagem) {
+        String texto;
+
+        while (true) {
+            System.out.println(mensagem);
+            texto = teclado.nextLine().trim();
+
+            if (!texto.isEmpty()) {
+                return texto;
+            }
+            System.out.println("Entrada inválida, tente novamente.");
+        }
+    }
+
     public static int lerInt(Scanner teclado) {
         while (true) {
             try {

@@ -1,5 +1,6 @@
 package br.mycontacts.service;
 
+import br.mycontacts.exceptions.ContatoNaoEncontradoException;
 import br.mycontacts.models.Contato;
 
 import java.text.Normalizer;
@@ -22,7 +23,7 @@ public class AgendaService {
     }
 
     // 3. Buscar por nome
-    public List<Contato> buscarContatos(String nome) {
+    public List<Contato> buscarContatos(String nome) throws ContatoNaoEncontradoException {
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome inválido");
         }
@@ -39,14 +40,14 @@ public class AgendaService {
         }
 
         if (resultados.isEmpty()) {
-            throw new IllegalArgumentException("Nenhum contato encontrado");
+            throw new ContatoNaoEncontradoException("Nenhum contato encontrado.");
         }
 
         return resultados;
     }
 
     // 4. Remover contato
-    public boolean removerContato(long id) {
+    public boolean removerContato(long id) throws ContatoNaoEncontradoException {
 
         if (contatos.isEmpty()) {
             throw new IllegalArgumentException("Lista de contatos vazia");
@@ -63,7 +64,7 @@ public class AgendaService {
             }
         }
 
-        throw new IllegalArgumentException("Nenhum contato encontrado.");
+        throw new ContatoNaoEncontradoException("Nenhum contato encontrado.");
     }
 
     // Normalização de String para pesquisa
