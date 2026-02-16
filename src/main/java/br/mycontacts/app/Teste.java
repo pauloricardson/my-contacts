@@ -10,6 +10,6 @@ public class Teste {
 
         Scanner teclado = new Scanner(System.in);
 
-        ConsoleUI.lerInt(teclado);
+        ConsoleUI.lerString(teclado, "Nome: ");
     }
 }
