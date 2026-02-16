@@ -27,18 +27,24 @@ public class RemoverContatoOption implements MenuOption {
 
         boolean validar = false;
 
-        try {
+        if (ConsoleUI.confirmar(String.format("Deseja remover o contato de ID " + id + " (s/n)?"))) {
 
-            validar = agendaService.removerContato(id);
+            try {
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+                validar = agendaService.removerContato(id);
 
-        if (validar) {
-            System.out.println("Contato " + id + " removido com sucesso!");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+            if (validar) {
+                System.out.println("Contato " + id + " removido com sucesso!");
+            } else {
+                System.out.println("Não foi possível remover o contato.");
+            }
+
         } else {
-            System.out.println("Não foi possível remover o contato.");
+            System.out.println("Operação cancelada");
         }
     }
 }
