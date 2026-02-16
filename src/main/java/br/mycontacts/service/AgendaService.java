@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AgendaService {
 
-    private ArrayList<Contato> contatos;
+    private ArrayList<Contato> contatos = new ArrayList<>();
 
     // 1. Adicionar novo Contato
     public void adicionarContato(Contato contato) {
