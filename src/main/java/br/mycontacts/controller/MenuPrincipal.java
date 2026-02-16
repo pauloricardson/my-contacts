@@ -1,9 +1,6 @@
 package br.mycontacts.controller;
 
-import br.mycontacts.controller.opcoes.AdicionarContatoOption;
-import br.mycontacts.controller.opcoes.BuscarContatoOption;
-import br.mycontacts.controller.opcoes.ListarContatosOption;
-import br.mycontacts.controller.opcoes.MenuOption;
+import br.mycontacts.controller.opcoes.*;
 import br.mycontacts.service.AgendaService;
 import br.mycontacts.utils.ConsoleUI;
 
@@ -19,6 +16,7 @@ public class MenuPrincipal {
         opcoes.add(new AdicionarContatoOption(agendaService));
         opcoes.add(new ListarContatosOption(agendaService));
         opcoes.add(new BuscarContatoOption(agendaService));
+        opcoes.add(new RemoverContatoOption(agendaService));
     }
 
     public void inciar() {

@@ -46,7 +46,7 @@ public class ConsoleUI {
         }
     }
 
-    public static long lerLong(Scanner teclado, String mensagem) {
+    public static long lerLong(String mensagem) {
         while (true) {
             try {
                 System.out.print(mensagem + " ");

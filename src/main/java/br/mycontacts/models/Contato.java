@@ -62,6 +62,7 @@ public class Contato {
     public String toString() {
         return "NOME: " + this.nome +
                 " | TELEFONE: " + this.telefone +
-                " | E-MAIL: " + this.email;
+                " | E-MAIL: " + this.email +
+                " | ID: " + this.id;
     }
 }
