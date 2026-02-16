@@ -35,6 +35,7 @@ public class MenuPrincipal {
 
             if (escolha >= 1 && escolha <= opcoes.size()) {
                 opcoes.get(escolha - 1).executar();
+                ConsoleUI.traco();
                 ConsoleUI.pausar();
                 ConsoleUI.limparConsole();
             }

@@ -2,6 +2,7 @@ package br.mycontacts.controller.opcoes;
 
 import br.mycontacts.models.Contato;
 import br.mycontacts.service.AgendaService;
+import br.mycontacts.utils.ConsoleUI;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,6 +23,11 @@ public class ListarContatosOption implements MenuOption {
 
     @Override
     public void executar() {
+
+        ConsoleUI.traco();
+        System.out.println(nomeFuncao());
+        ConsoleUI.traco();
+
         if (agendaService.listarContatos().isEmpty()) {
             System.out.println("Lista de contatos vazia.");
             return;
