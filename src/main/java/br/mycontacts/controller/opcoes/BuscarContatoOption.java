@@ -1,7 +1,11 @@
 package br.mycontacts.controller.opcoes;
 
+import br.mycontacts.models.Contato;
 import br.mycontacts.service.AgendaService;
 import br.mycontacts.utils.ConsoleUI;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class BuscarContatoOption implements MenuOption {
 
@@ -24,8 +28,14 @@ public class BuscarContatoOption implements MenuOption {
 
         String pesquisar = ConsoleUI.lerString("Pesquisar por nome:");
 
+        ConsoleUI.traco();
+
         try {
-            agendaService.buscarContatos(pesquisar);
+
+            for (Contato c : agendaService.buscarContatos(pesquisar)) {
+                System.out.println(c);
+            }
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
