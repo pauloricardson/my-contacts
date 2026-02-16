@@ -22,7 +22,7 @@ public class ConsoleUI {
         String texto;
 
         while (true) {
-            System.out.println(mensagem);
+            System.out.print(mensagem + " ");
             texto = teclado.nextLine().trim();
 
             if (!texto.isEmpty()) {
@@ -32,34 +32,37 @@ public class ConsoleUI {
         }
     }
 
-    public static int lerInt(Scanner teclado) {
+    public static int lerInt(Scanner teclado, String mensagem) {
         while (true) {
             try {
+                System.out.print(mensagem + " ");
                 return Integer.parseInt(teclado.nextLine());
             } catch (Exception e) {
-                System.out.println("Opção inválida, tente novamente > ");
+                System.out.println("Opção inválida, tente novamente.");
             }
         }
     }
 
-    public static long lerLong(Scanner teclado) {
+    public static long lerLong(Scanner teclado, String mensagem) {
         while (true) {
             try {
+                System.out.print(mensagem + " ");
                 return Long.parseLong(teclado.nextLine());
             } catch (Exception e) {
-                System.out.println("Valor inválido, tente novamente > ");
+                System.out.println("Valor inválido, tente novamente.");
             }
         }
     }
 
-    public static boolean confirmar(Scanner teclado) {
+    public static boolean confirmar(Scanner teclado, String mensagem) {
         while (true) {
+            System.out.println(mensagem + " ");
             String entrada = teclado.nextLine().trim().toLowerCase();
 
             if (entrada.equals("s")) return true;
             if (entrada.equals("n")) return false;
 
-            System.out.println("Digite apenas (s/n): ");
+            System.out.println("Valor inválido, tente novamente.");
         }
     }
 }
