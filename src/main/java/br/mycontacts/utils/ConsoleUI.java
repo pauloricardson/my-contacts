@@ -3,6 +3,9 @@ package br.mycontacts.utils;
 import java.util.Scanner;
 
 public class ConsoleUI {
+
+    private static final Scanner teclado = new Scanner(System.in);
+
     public static void traco() {
         System.out.println("------------------------------------------------------------");
     }
@@ -18,7 +21,7 @@ public class ConsoleUI {
         teclado.nextLine();
     }
 
-    public static String lerString(Scanner teclado, String mensagem) {
+    public static String lerString(String mensagem) {
         String texto;
 
         while (true) {
