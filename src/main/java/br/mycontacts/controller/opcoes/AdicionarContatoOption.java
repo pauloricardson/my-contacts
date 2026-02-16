@@ -1,6 +1,7 @@
 package br.mycontacts.controller.opcoes;
 
 import br.mycontacts.models.Contato;
+import br.mycontacts.models.ContatoComercial;
 import br.mycontacts.service.AgendaService;
 import br.mycontacts.utils.ConsoleUI;
 
@@ -31,12 +32,45 @@ public class AdicionarContatoOption implements MenuOption {
 
         ConsoleUI.traco();
 
-        if (ConsoleUI.confirmar("Confirmar (s/n)?")) {
-            Contato contato = new Contato(nome, telefone, email);
-            agendaService.adicionarContato(contato);
-            System.out.println("Contato adicionado com sucesso!");
+        System.out.print("""
+                Tipo de contato:
+                1. Pessoal
+                2. Comercial
+                """);
+        int opcao;
+
+        while (true) {
+            opcao = ConsoleUI.lerInt("Opção:");
+            if (opcao == 1 || opcao == 2) {
+                break;
+            }
+            System.out.println("Opção inválida, tente novamente.");
+        }
+
+        String comercial = "\0";
+
+        if (opcao == 2) {
+            comercial = ConsoleUI.lerString("Empresa:");
+        }
+
+        if (!ConsoleUI.confirmar("Confirmar (s/n)?")) {
+            System.out.println("Opreção cancelada.");
             return;
         }
-        System.out.println("Opreção cancelada.");
+
+        try {
+            if (opcao == 1) {
+                Contato contato = new Contato(nome, telefone, email);
+                agendaService.adicionarContato(contato);
+            } else {
+                Contato contato = new ContatoComercial(nome, telefone, email, comercial);
+                agendaService.adicionarContato(contato);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("Contato adicionado com sucesso!");
+
     }
 }
