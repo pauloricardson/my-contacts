@@ -4,9 +4,6 @@ import br.mycontacts.models.Contato;
 import br.mycontacts.service.AgendaService;
 import br.mycontacts.utils.ConsoleUI;
 
-import java.util.Iterator;
-import java.util.List;
-
 public class BuscarContatoOption implements MenuOption {
 
     private AgendaService agendaService;
