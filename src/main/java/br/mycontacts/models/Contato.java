@@ -29,6 +29,10 @@ public class Contato {
         return email;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public void setNome(String nome) {
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome inválido");

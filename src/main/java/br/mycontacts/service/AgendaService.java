@@ -4,6 +4,7 @@ import br.mycontacts.models.Contato;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class AgendaService {
@@ -44,8 +45,26 @@ public class AgendaService {
         return resultados;
     }
 
-
     // 4. Remover contato
+    public boolean removerContato(long id) {
+
+        if (contatos.isEmpty()) {
+            throw new IllegalArgumentException("Lista de contatos vazia");
+        }
+
+        Iterator<Contato> it = contatos.iterator();
+
+        while (it.hasNext()) {
+            Contato contato = it.next();
+
+            if (contato.getId() == id) {
+                it.remove();
+                return true;
+            }
+        }
+
+        throw new IllegalArgumentException("Nenhum contato encontrado.");
+    }
 
     // Normalização de String para pesquisa
     public String normalizar(String texto) {
