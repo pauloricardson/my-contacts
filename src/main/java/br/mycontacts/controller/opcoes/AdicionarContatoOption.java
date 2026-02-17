@@ -22,53 +22,68 @@ public class AdicionarContatoOption implements MenuOption {
     @Override
     public void executar() {
 
-        ConsoleUI.traco();
-        System.out.println(nomeFuncao());
-        ConsoleUI.traco();
+        boolean validar = true;
 
-        String nome = ConsoleUI.lerString("Nome:");
-        String telefone = ConsoleUI.lerString("Telefone:");
-        String email = ConsoleUI.lerString("E-mail:");
+        do {
 
-        ConsoleUI.traco();
+            ConsoleUI.traco();
+            System.out.println(nomeFuncao());
+            ConsoleUI.traco();
 
-        System.out.print("""
-                Tipo de contato:
-                1. Pessoal
-                2. Comercial
-                """);
-        int opcao;
+            String nome = ConsoleUI.lerString("Nome:");
+            String telefone = ConsoleUI.lerString("Telefone:");
+            String email = ConsoleUI.lerString("E-mail:");
 
-        while (true) {
-            opcao = ConsoleUI.lerInt("Opção:");
-            if (opcao == 1 || opcao == 2) {
-                break;
+            ConsoleUI.traco();
+
+            System.out.print("""
+                    Tipo de contato:
+                    1. Pessoal
+                    2. Comercial
+                    """);
+            int opcao;
+
+            while (true) {
+                opcao = ConsoleUI.lerInt("Opção:");
+                if (opcao == 1 || opcao == 2) {
+                    break;
+                }
+                System.out.println("Opção inválida, tente novamente.");
             }
-            System.out.println("Opção inválida, tente novamente.");
-        }
 
-        String comercial = "\0";
+            String comercial = "\0";
 
-        if (opcao == 2) {
-            comercial = ConsoleUI.lerString("Empresa:");
-        }
-
-        if (!ConsoleUI.confirmar("Confirmar (s/n)?")) {
-            System.out.println("Opreção cancelada.");
-            return;
-        }
-
-        try {
-            if (opcao == 1) {
-                Contato contato = new Contato(nome, telefone, email);
-                agendaService.adicionarContato(contato);
-            } else {
-                Contato contato = new ContatoComercial(nome, telefone, email, comercial);
-                agendaService.adicionarContato(contato);
+            if (opcao == 2) {
+                comercial = ConsoleUI.lerString("Empresa:");
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+
+            if (!ConsoleUI.confirmar("Confirmar (s/n)?")) {
+                System.out.println("Opreção cancelada.");
+                return;
+            }
+
+            try {
+                if (opcao == 1) {
+                    Contato contato = new Contato(nome, telefone, email);
+                    agendaService.adicionarContato(contato);
+                } else {
+                    Contato contato = new ContatoComercial(nome, telefone, email, comercial);
+                    agendaService.adicionarContato(contato);
+                }
+
+                validar = false;
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                ConsoleUI.traco();
+
+                if (!ConsoleUI.confirmar("Deseja tentar novamente (s/n)?")) {
+                    System.out.println("Operação cancelada.");
+                    return;
+                }
+            }
+
+        } while (validar);
 
         System.out.println("Contato adicionado com sucesso!");
 
