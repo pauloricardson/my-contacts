@@ -8,6 +8,9 @@ Sistema de **agenda de contatos em Java (console)** desenvolvido para praticar P
 
 O sistema permite cadastrar, listar, buscar e remover contatos com validação de dados e tratamento de exceções.
 
+## ALUNO: PAULO RICARDSON SILVA COSTA
+## E-MAIL: dev.ricardson@gmail.com
+
 ---
 
 ## 🚀 Funcionalidades
