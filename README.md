@@ -1,5 +1,12 @@
 # 📒 MyContacts
 
+---
+
+# Capacita Brasil - iRede
+### Trilha de Desenvolvimento Java
+
+---
+
 ![Java](https://img.shields.io/badge/Java-POO-blue)
 ![Status](https://img.shields.io/badge/status-acad%C3%AAmico-green)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
@@ -7,6 +14,11 @@
 Sistema de **agenda de contatos em Java (console)** desenvolvido para praticar Programação Orientada a Objetos, manipulação de listas e organização modular em pacotes.
 
 O sistema permite cadastrar, listar, buscar e remover contatos com validação de dados e tratamento de exceções.
+
+---
+
+## ALUNO: PAULO RICARDSON SILVA COSTA
+## E-MAIL: dev.ricardson@gmail.com
 
 ---
 
@@ -35,36 +47,6 @@ O sistema permite cadastrar, listar, buscar e remover contatos com validação d
 
 ---
 
-## 🧱 Estrutura do Projeto
-
-mycontacts/
-├── app/
-│   └── Main.java
-│
-├── controller/
-│   ├── MenuPrincipal.java
-│   └── opcoes/
-│       ├── AdicionarContatoOption.java
-│       ├── ListarContatosOption.java
-│       ├── BuscarContatoOption.java
-│       └── RemoverContatoOption.java
-│
-├── service/
-│   └── AgendaService.java
-│
-├── model/
-│   ├── Contato.java
-│   └── ContatoComercial.java
-│
-├── exceptions/
-│   └── ContatoNaoEncontradoException.java
-│
-├── utils/
-│   ├── ConsoleUI.java
-│   └── ValidadorEmail.java
-
----
-
 ## 📊 Modelo de Dados
 
 
@@ -72,11 +54,13 @@ mycontacts/
 - nome
 - telefone
 - email
+- id (ajuda na remoção do contato, já que é único)
 
 ### ContatoComercial (Herança)
 - nome
 - telefone
 - email
+- id
 - empresa
 
 ---
