@@ -1,37 +1,34 @@
 package br.mycontacts.service;
 
-import br.mycontacts.exceptions.ContatoNaoEncontradoException;
+import br.mycontacts.database.ContatoDAO;
 import br.mycontacts.models.Contato;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class AgendaService {
 
-    private ArrayList<Contato> contatos = new ArrayList<>();
+    private final ContatoDAO contatoDAO = new ContatoDAO();
 
-    // 1. Adicionar novo Contato
     public void adicionarContato(Contato contato) {
-        contatos.add(contato);
+        contatoDAO.salvar(contato);
     }
 
-    // 2. Listar contatos
     public List<Contato> listarContatos() {
-        return contatos;
+        return contatoDAO.buscarTodos();
     }
-
-    // 3. Buscar por nome
-    public List<Contato> buscarContatos(String nome) throws ContatoNaoEncontradoException {
+//
+    public List<Contato> buscarContatos(String nome) {
         if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome inválido");
+            return listarContatos(); // Se estiver em branco, retorna todo mundo
         }
 
         String termo = normalizar(nome.toLowerCase());
         List<Contato> resultados = new ArrayList<>();
 
-        for (Contato c : contatos) {
+        // Varre a lista que veio do banco e filtra usando sua lógica de acentuação
+        for (Contato c : listarContatos()) {
             String nomeContato = normalizar(c.getNome().toLowerCase());
 
             if (nomeContato.contains(termo)) {
@@ -39,38 +36,36 @@ public class AgendaService {
             }
         }
 
-        if (resultados.isEmpty()) {
-            throw new ContatoNaoEncontradoException("Nenhum contato encontrado.");
-        }
-
-        return resultados;
+        return resultados; // Retorna os achados (ou uma lista vazia se não achar nenhum)
     }
 
-    // 4. Remover contato
-    public boolean removerContato(long id) throws ContatoNaoEncontradoException {
+    public boolean removerContato(long id) throws br.mycontacts.exceptions.ContatoNaoEncontradoException {
 
-        if (contatos.isEmpty()) {
-            throw new IllegalArgumentException("Lista de contatos vazia");
+        // O Service delega a responsabilidade para o DAO apagar no MySQL
+        boolean deletadoComSucesso = contatoDAO.deletar(id);
+
+        // Se o banco retornar false, significa que aquele ID não existia na tabela
+        if (!deletadoComSucesso) {
+            throw new br.mycontacts.exceptions.ContatoNaoEncontradoException(
+                    "O contato selecionado não foi encontrado no banco de dados."
+            );
         }
 
-        Iterator<Contato> it = contatos.iterator();
-
-        while (it.hasNext()) {
-            Contato contato = it.next();
-
-            if (contato.getId() == id) {
-                it.remove();
-                return true;
-            }
-        }
-
-        throw new ContatoNaoEncontradoException("Nenhum contato encontrado.");
+        return true;
     }
 
-    // Normalização de String para pesquisa
+    public void atualizarContato(Contato contato) {
+        contatoDAO.atualizar(contato);
+    }
+
+    // Normalização
     public String normalizar(String texto) {
-        texto = Normalizer.normalize(texto, Normalizer.Form.NFD);
+
+        texto = Normalizer.normalize(
+                texto,
+                Normalizer.Form.NFD
+        );
+
         return texto.replaceAll("[^\\p{ASCII}]", "");
     }
-
 }

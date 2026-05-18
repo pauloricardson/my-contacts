@@ -1,0 +1,20 @@
+@FXML
+public void adicionarContato() {
+    String nome = txtNome.getText();
+    String telefone = txtTelefone.getText();
+    String email = txtEmail.getText();
+
+    Contato novoContato;
+
+    if (chkComercial.isSelected()) {
+        String empresa = txtEmpresa.getText();
+        // Cria usando a sua classe filha (Polimorfismo)
+        novoContato = new ContatoComercial(nome, telefone, email, empresa);
+    } else {
+        // Cria usando a classe base comum
+        novoContato = new Contato(nome, telefone, email);
+    }
+
+    // Agora é só passar o 'novoContato' para o seu DAO salvar no banco!
+    System.out.println("Salvar no banco: " + novoContato);
+}

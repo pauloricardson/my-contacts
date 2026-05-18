@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="829.0" prefWidth="1200.0" style="-fx-background-color: #DDD8D4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.mycontacts.controller.MainViewController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="113.0" prefWidth="1200.0" style="-fx-background-color: #182737;">
+         <children>
+            <Button fx:id="adicionarContato" mnemonicParsing="false" onAction="#adicionarContato" prefHeight="40.0" prefWidth="315.0" style="-fx-background-color: #425AD5;" text="Adicionar Contato" textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Region prefHeight="60.0" prefWidth="264.0" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Agenda de Contatos" textAlignment="RIGHT" wrappingWidth="576.435546875">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <AnchorPane prefHeight="660.0" prefWidth="1200.0">
+         <children>
+            <VBox prefHeight="682.0" prefWidth="327.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vizualização do Contato" textAlignment="CENTER" wrappingWidth="299.0908203125">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Text>
+                  <Pane prefHeight="134.0" prefWidth="327.0">
+                     <children>
+                        <ImageView fitHeight="134.0" fitWidth="119.0" layoutX="104.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/user.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Label text="Nome:">
+                     <VBox.margin>
+                        <Insets left="15.0" right="15.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelNome" prefHeight="30.0" prefWidth="379.0" style="-fx-border-radius: 20; -fx-background-color: #ffffff;">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Telefone">
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelTelefone" layoutX="25.0" layoutY="230.0" prefHeight="30.0" prefWidth="379.0" style="-fx-border-radius: 20; -fx-background-color: #ffffff;">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="E-mail">
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelEmail" prefHeight="30.0" prefWidth="379.0" style="-fx-border-radius: 20; -fx-background-color: #ffffff;">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Organização">
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelOrganizacao" prefHeight="30.0" prefWidth="379.0" style="-fx-border-radius: 20; -fx-background-color: #ffffff;">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="editarContato" mnemonicParsing="false" onAction="#editarContato" prefHeight="40.0" prefWidth="315.0" style="-fx-background-color: #008000;" text="Editar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="apagarContato" mnemonicParsing="false" onAction="#apagarContato" prefHeight="40.0" prefWidth="315.0" style="-fx-background-color: #990000;" text="Apagar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="limparPainelLateral" mnemonicParsing="false" onAction="#limparPainelLateral" prefHeight="40.0" prefWidth="315.0" text="Limpar">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox layoutX="360.0" prefHeight="653.0" prefWidth="840.0">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="71.0" prefWidth="840.0">
+                     <children>
+                        <TextField fx:id="txtPesquisa" prefHeight="40.0" prefWidth="260.0" promptText="Pesquisar por nome">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Italic" size="17.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="atualizarLista" mnemonicParsing="false" onAction="#atualizarLista" prefHeight="39.0" prefWidth="39.0" style="-fx-background-color: #425AD5;">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/atualizar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <TableView fx:id="tabelaContatos" prefHeight="584.0" prefWidth="825.0">
+                    <columns>
+                      <TableColumn fx:id="colNome" prefWidth="265.0" text="Nome" />
+                      <TableColumn fx:id="colTelefone" prefWidth="188.0" text="Número de Telefone" />
+                        <TableColumn fx:id="colEmail" minWidth="1.0" prefWidth="229.0" text="E-mail" />
+                        <TableColumn fx:id="colData" maxWidth="383.0" prefWidth="139.0" text="Data de Criação" />
+                    </columns>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets right="15.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #989699;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agenda de Contados | Capacita Brasil | Desenvolvido por Paulo R S Costa" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
